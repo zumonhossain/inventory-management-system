@@ -3,6 +3,8 @@
     Edit Customer
 @endsection
 @section('content')
+    <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -58,4 +60,56 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#myForm').validate({
+                rules: {
+                    name: {
+                        required : true,
+                    }, 
+                    mobile_no: {
+                        required : true,
+                    },
+                    email: {
+                        required : true,
+                    },
+                    address: {
+                        required : true,
+                    },
+                    customer_image: {
+                        required : true,
+                    },
+                },
+                messages :{
+                    name: {
+                        required : 'Please Enter Your Name',
+                    },
+                    mobile_no: {
+                        required : 'Please Enter Your Mobile Number',
+                    },
+                    email: {
+                        required : 'Please Enter Your Email',
+                    },
+                    address: {
+                        required : 'Please Enter Your Address',
+                    },
+                    customer_image: {
+                        required : 'Please Select one Image',
+                    },
+                },
+                errorElement : 'span', 
+                errorPlacement: function (error,element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight : function(element, errorClass, validClass){
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight : function(element, errorClass, validClass){
+                    $(element).removeClass('is-invalid');
+                },
+            });
+        });
+    </script>
 @endsection
