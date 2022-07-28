@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ManageInfoService;
+use App\Http\Controllers\Helpers\FileUploadController;
 use Illuminate\Http\Request;
 use Image;
 use Auth;
@@ -28,14 +29,11 @@ class CustomerController extends Controller{
         $customer_slug = uniqid('customer-15');
         $created_by = Auth::user()->id;
 
-        $image = $request->file('customer_image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); // 343434.png
-        Image::make($image)->resize(200,200)->save('upload/customer/'.$name_gen);
-        $save_url = 'upload/customer/'.$name_gen;
+        $customerImagePath = (new FileUploadController())->uploadCustomerImage($request);
 
         (new ManageInfoService())->insertCustomerInformation(
             $request['name'],
-            $save_url,
+            $customerImagePath,
             $request['mobile_no'],
             $request['email'],
             $request['address'],
@@ -55,15 +53,12 @@ class CustomerController extends Controller{
         $customer_slug = uniqid('customer-15');
         $updated_by = Auth::user()->id;
 
-        $image = $request->file('customer_image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); // 343434.png
-        Image::make($image)->resize(200,200)->save('upload/customer/'.$name_gen);
-        $save_url = 'upload/customer/'.$name_gen;
+        $customerImagePath = (new FileUploadController())->uploadCustomerImage($request);
 
         (new ManageInfoService())->updateCustomerInformation(
             $request['id'],
             $request['name'],
-            $save_url,
+            $customerImagePath,
             $request['mobile_no'],
             $request['email'],
             $request['address'],
