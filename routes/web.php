@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SupplierController;
 
 
 /*
@@ -38,6 +39,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/change/password',[AdminController::class,'changePassword'])->name('change.password');
     Route::post('/update/password',[AdminController::class,'updatePassword'])->name('update.password');
 
+    // Supplier
+    Route::get('/supplier/all-supplier',[SupplierController::class,'allSupplier'])->name('all_supplier');
+    Route::get('/supplier/new-supplier-form',[SupplierController::class,'addSupplierForm'])->name('supplier_new_form');
+    Route::post('/supplier/insert-new-supplier',[SupplierController::class,'insertSupplierFormSubmit'])->name('supplier_insert_form');
+    Route::get('/supplier/edit-supplier/{id}',[SupplierController::class,'editSupplierForm'])->name('supplier_edit_form');
+    Route::post('/supplier/update-supplier',[SupplierController::class,'updateSupplierFormSubmit'])->name('supplier_update_form');
+    Route::get('/supplier/delete-supplier/{id}',[SupplierController::class,'deleteSupplier'])->name('supplier_delete');
 });
 
 

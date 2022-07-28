@@ -1,0 +1,24 @@
+.all_and_all{
+    background-color: #252b3b;
+}
+h4.user-registration {
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    float: left;
+    line-height: 42px;
+    color: #ffffff;
+}
+
+a.all_link {
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    background: #0097a7;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    text-transform: uppercase;
+}

@@ -33,6 +33,7 @@
         <!-- App Css-->
         <link href="{{ asset('contents/admin') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
+        <link rel="stylesheet" type="text/css" href="{{ asset('contents/admin') }}/assets/css/style.css" >
         <link rel="stylesheet" type="text/css" href="{{ asset('contents/admin') }}/assets/css/toastr.css" >
     </head>
 
@@ -151,18 +152,15 @@
                             <li>
                                 <a href="{{ route('admin.dashboard') }}" class="waves-effect"><i class="ri-dashboard-line"></i><span>Dashboard</span></a>
                             </li>
-
-                            <li>
-                                <a href="calendar.html" class=" waves-effect"><i class="ri-calendar-2-line"></i><span>Calendar</span></a>
-                            </li>
-                
+                            
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-mail-send-line"></i>
-                                    <span>Email</span>
+                                    <i class="ri-hotel-fill"></i>
+                                    <span>Manage Suppliers</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="email-inbox.html">Inbox</a></li>
+                                    <li><a href="{{ route('all_supplier') }}">All Supplier</a></li>
+                                
                                 </ul>
                             </li>
 
@@ -268,6 +266,10 @@
                 }
             @endif 
         </script>
+
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/sweetalert2@10.js"></script>
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/code.js"></script>
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/validate.min.js"></script>
 
     </body>
 
