@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\CustomerController;
 
 
 /*
@@ -46,6 +47,15 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/supplier/edit-supplier/{id}',[SupplierController::class,'editSupplierForm'])->name('supplier_edit_form');
     Route::post('/supplier/update-supplier',[SupplierController::class,'updateSupplierFormSubmit'])->name('supplier_update_form');
     Route::get('/supplier/delete-supplier/{id}',[SupplierController::class,'deleteSupplier'])->name('supplier_delete');
+
+    // Customer
+    Route::get('/customer/all-customer',[CustomerController::class,'allCustomer'])->name('all_customer');
+    Route::get('/customer/add-customer-form',[CustomerController::class,'addCustomerForm'])->name('add_customer');
+    Route::post('/customer/insert-new-customer',[CustomerController::class,'insertCustomerFormSubmit'])->name('insert_customer');
+    Route::get('/customer/edit-customer/{id}',[CustomerController::class,'editCustomerForm'])->name('edit_customer');
+    Route::post('/customer/update-customer',[CustomerController::class,'updateCustomerFormSubmit'])->name('update_customer');
+    Route::get('/customer/delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete_customer');
+    
 });
 
 
