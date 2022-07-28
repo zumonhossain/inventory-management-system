@@ -3,8 +3,8 @@
     Edit Profile
 @endsection
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -13,7 +13,7 @@
                     <a href="{{ route('all_supplier') }}" class="all_link"><i class="mdi mdi-grid"></i> All Supplier</a>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('supplier_insert_form') }}" id="mySupplierForm" >
+                    <form method="post" action="{{ route('supplier_insert_form') }}" id="myForm" >
                     @csrf
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-form-label">Supplier Name </label>
@@ -48,7 +48,7 @@
 
     <script type="text/javascript">
         $(document).ready(function (){
-            $('#mySupplierForm').validate({
+            $('#myForm').validate({
                 rules: {
                     name: {
                         required : true,

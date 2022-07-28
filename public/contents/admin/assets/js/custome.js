@@ -7,3 +7,6 @@ $(document).ready(function(){
         reader.readAsDataURL(e.target.files['0']);
     });
 });
+
+
+

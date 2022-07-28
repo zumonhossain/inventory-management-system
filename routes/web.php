@@ -41,7 +41,7 @@ Route::group(['prefix'=>'admin'], function(){
 
     // Supplier
     Route::get('/supplier/all-supplier',[SupplierController::class,'allSupplier'])->name('all_supplier');
-    Route::get('/supplier/new-supplier-form',[SupplierController::class,'addSupplierForm'])->name('supplier_new_form');
+    Route::get('/supplier/add-supplier-form',[SupplierController::class,'addSupplierForm'])->name('supplier_add_form');
     Route::post('/supplier/insert-new-supplier',[SupplierController::class,'insertSupplierFormSubmit'])->name('supplier_insert_form');
     Route::get('/supplier/edit-supplier/{id}',[SupplierController::class,'editSupplierForm'])->name('supplier_edit_form');
     Route::post('/supplier/update-supplier',[SupplierController::class,'updateSupplierFormSubmit'])->name('supplier_update_form');

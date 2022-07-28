@@ -3,7 +3,8 @@
     Edit Profile
 @endsection
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -12,7 +13,7 @@
                     <a href="{{ route('all_supplier') }}" class="all_link"><i class="mdi mdi-grid"></i> All Supplier</a>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('supplier_update_form') }}" id="mySupplierForm" >
+                    <form method="post" action="{{ route('supplier_update_form') }}" id="myForm" >
                         @csrf
 
                         <input type="hidden" name="id" value="{{ $supplier->supplier_id }}">

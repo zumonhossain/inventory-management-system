@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header all_and_all">
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i> All Supplier Information </h4>
-                    <a href="{{ route('supplier_new_form') }}" class="all_link"><i class="mdi mdi-grid"></i> Add Supplier</a>
+                    <a href="{{ route('supplier_add_form') }}" class="all_link"><i class="mdi mdi-grid"></i> Add Supplier</a>
                 </div>
                 <div class="card-body">
                 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
