@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\UnitController;
 
 
 /*
@@ -55,6 +56,15 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/customer/edit-customer/{id}',[CustomerController::class,'editCustomerForm'])->name('edit_customer');
     Route::post('/customer/update-customer',[CustomerController::class,'updateCustomerFormSubmit'])->name('update_customer');
     Route::get('/customer/delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete_customer');
+    
+
+    // Unit
+    Route::get('/unit/all-unit',[UnitController::class,'allUnit'])->name('all_unit');
+    Route::get('/unit/add-unit-form',[UnitController::class,'addUnitForm'])->name('add_unit');
+    Route::post('/unit/insert-new-unit',[UnitController::class,'insertUnitFormSubmit'])->name('insert_unit');
+    Route::get('/unit/edit-unit/{id}',[UnitController::class,'editUnitForm'])->name('edit_unit');
+    Route::post('/unit/update-unit',[UnitController::class,'updateUnitFormSubmit'])->name('update_unit');
+    Route::get('/unit/delete-unit/{id}',[UnitController::class,'deleteUnit'])->name('delete_unit');
     
 });
 

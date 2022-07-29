@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Models\Customer;
+use App\Models\Unit;
 use Carbon\Carbon;
 use Auth;
 
@@ -97,6 +98,43 @@ class ManageInfoService extends Controller{
     public function deleteCustomerInformation($id){
         return Customer::where('customer_id', $id)->update([
             'customer_status' => 0
+        ]);
+    }
+
+
+
+    /*=====================
+            Unit
+    =====================*/
+    public function getUnitInformation($id){
+        if($id == null){
+            return Unit::where('unit_status', 1)->get();
+        }else{
+            return Unit::where('unit_status', 1)->where('unit_id', $id)->first();
+        }
+    }
+
+    public function insertUnitInformation($name, $unit_slug, $created_by){
+        return Unit::insertGetId([
+            'name' => $name,
+            'unit_slug' => $unit_slug,
+            'created_by' => $created_by,
+            'created_at' => Carbon::now()
+        ]);
+    }
+
+    public function updateUnitInformation($id, $name, $unit_slug, $updated_by){
+        return Unit::where('unit_id', $id)->update([
+            'name' => $name,
+            'unit_slug' => $unit_slug,
+            'updated_by' => $updated_by,
+            'updated_at' => Carbon::now()
+        ]);
+    }
+
+    public function deleteUnitInformation($id){
+        return Unit::where('unit_id', $id)->update([
+            'unit_status' => 0
         ]);
     }
 

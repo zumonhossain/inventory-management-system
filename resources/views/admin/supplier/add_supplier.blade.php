@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Edit Profile
+    Add Unit
 @endsection
 @section('content')
     <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>

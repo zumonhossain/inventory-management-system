@@ -13,15 +13,15 @@
                 <div class="card-body">
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Name</th> 
-                            <th>Image</th> 
-                            <th>Mobile Number</th>
-                            <th>Email</th>
-                            <th>Address</th> 
-                            <th>Action</th>
-                            
+                            <tr>
+                                <th>Sl</th>
+                                <th>Name</th> 
+                                <th>Image</th> 
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>Address</th> 
+                                <th>Action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach($customers as $key=> $item)
