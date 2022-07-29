@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UnitController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 /*
@@ -65,6 +66,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/unit/edit-unit/{id}',[UnitController::class,'editUnitForm'])->name('edit_unit');
     Route::post('/unit/update-unit',[UnitController::class,'updateUnitFormSubmit'])->name('update_unit');
     Route::get('/unit/delete-unit/{id}',[UnitController::class,'deleteUnit'])->name('delete_unit');
+
+    // Category
+    Route::get('/category/all-category',[CategoryController::class,'allCategory'])->name('all_category');
+    Route::get('/category/add-category-form',[CategoryController::class,'addCategoryForm'])->name('add_category');
+    Route::post('/category/insert-new-category',[CategoryController::class,'insertCategoryFormSubmit'])->name('insert_category');
+    Route::get('/category/edit-category/{id}',[CategoryController::class,'editCategoryForm'])->name('edit_category');
+    Route::post('/category/update-category',[CategoryController::class,'updateCategoryFormSubmit'])->name('update_category');
+    Route::get('/category/delete-category/{id}',[CategoryController::class,'deleteCategory'])->name('delete_category');
     
 });
 

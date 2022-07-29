@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Models\Customer;
 use App\Models\Unit;
+use App\Models\Category;
 use Carbon\Carbon;
 use Auth;
 
@@ -135,6 +136,42 @@ class ManageInfoService extends Controller{
     public function deleteUnitInformation($id){
         return Unit::where('unit_id', $id)->update([
             'unit_status' => 0
+        ]);
+    }
+
+
+    /*=====================
+            Category
+    =====================*/
+    public function getCategoryInformation($id){
+        if($id == null){
+            return Category::where('category_status', 1)->get();
+        }else{
+            return Category::where('category_status', 1)->where('category_id', $id)->first();
+        }
+    }
+
+    public function insertCategoryInformation($name, $category_slug, $created_by){
+        return Category::insertGetId([
+            'name' => $name,
+            'category_slug' => $category_slug,
+            'created_by' => $created_by,
+            'created_at' => Carbon::now()
+        ]);
+    }
+
+    public function updateCategoryInformation($id, $name, $category_slug, $updated_by){
+        return Category::where('category_id', $id)->update([
+            'name' => $name,
+            'category_slug' => $category_slug,
+            'updated_by' => $updated_by,
+            'updated_at' => Carbon::now()
+        ]);
+    }
+
+    public function deleteCategoryInformation($id){
+        return Category::where('category_id', $id)->update([
+            'category_status' => 0
         ]);
     }
 
