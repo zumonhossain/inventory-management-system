@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($categorys as $key => $item)
+                            @foreach($categories as $key => $item)
                                 <tr>
                                     <td> {{ $key+1}} </td>
                                     <td> {{ $item->name }} </td>

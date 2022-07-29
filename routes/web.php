@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 /*
@@ -74,6 +75,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/category/edit-category/{id}',[CategoryController::class,'editCategoryForm'])->name('edit_category');
     Route::post('/category/update-category',[CategoryController::class,'updateCategoryFormSubmit'])->name('update_category');
     Route::get('/category/delete-category/{id}',[CategoryController::class,'deleteCategory'])->name('delete_category');
+    
+    // Product
+    Route::get('/product/all-product',[ProductController::class,'allProduct'])->name('all_product');
+    Route::get('/product/add-product-form',[ProductController::class,'addProductForm'])->name('add_product');
+    Route::post('/product/insert-new-product',[ProductController::class,'insertProductFormSubmit'])->name('insert_product');
+    Route::get('/product/edit-product/{id}',[ProductController::class,'editProductForm'])->name('edit_product');
+    Route::post('/product/update-product',[ProductController::class,'updateProductFormSubmit'])->name('update_product');
+    Route::get('/product/delete-product/{id}',[ProductController::class,'deleteProduct'])->name('delete_product');
     
 });
 

@@ -9,8 +9,8 @@ use Auth;
 
 class CategoryController extends Controller{
     public function allCategory(){
-        $categorys = (new ManageInfoService())->getCategoryInformation(null);
-        return view('admin.category.all_category',compact('categorys'));
+        $categories = (new ManageInfoService())->getCategoryInformation(null);
+        return view('admin.category.all_category',compact('categories'));
     }
 
     public function addCategoryForm(){
@@ -59,7 +59,7 @@ class CategoryController extends Controller{
         return redirect()->route('all_category')->with($notification);
     }
 
-    public function deletecategory($id){
+    public function deleteCategory($id){
         (new ManageInfoService())->deleteCategoryInformation($id);
 
         $notification = array(

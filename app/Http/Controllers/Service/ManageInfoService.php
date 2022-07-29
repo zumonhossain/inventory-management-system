@@ -8,14 +8,18 @@ use App\Models\Supplier;
 use App\Models\Customer;
 use App\Models\Unit;
 use App\Models\Category;
+use App\Models\Product;
 use Carbon\Carbon;
 use Auth;
 
 class ManageInfoService extends Controller{
 
-    /*=====================
-            Supplier
-    =====================*/
+    /*
+    =================================================================
+    ========================== Supplier =============================
+    =================================================================
+    */
+
     public function getSupplierInformation($id){
         if($id == null){
             return Supplier::where('supplier_status', 1)->get();
@@ -57,11 +61,12 @@ class ManageInfoService extends Controller{
     }
 
 
+    /*
+    =================================================================
+    ========================== Customer =============================
+    =================================================================
+    */
 
-
-    /*=====================
-            Customer
-    =====================*/
     public function getCustomerInformation($id){
         if($id == null){
             return Customer::where('customer_status', 1)->get();
@@ -104,9 +109,12 @@ class ManageInfoService extends Controller{
 
 
 
-    /*=====================
-            Unit
-    =====================*/
+    /*
+    =================================================================
+    ============================ Unit ===============================
+    =================================================================
+    */
+
     public function getUnitInformation($id){
         if($id == null){
             return Unit::where('unit_status', 1)->get();
@@ -140,9 +148,12 @@ class ManageInfoService extends Controller{
     }
 
 
-    /*=====================
-            Category
-    =====================*/
+    /*
+    =================================================================
+    ========================== Category =============================
+    =================================================================
+    */
+
     public function getCategoryInformation($id){
         if($id == null){
             return Category::where('category_status', 1)->get();
@@ -172,6 +183,54 @@ class ManageInfoService extends Controller{
     public function deleteCategoryInformation($id){
         return Category::where('category_id', $id)->update([
             'category_status' => 0
+        ]);
+    }
+
+    
+
+    /*
+    =================================================================
+    ========================== Product =============================
+    =================================================================
+    */
+
+    public function getProductInformation($id){
+        if($id == null){
+            return Product::where('product_status', 1)->get();
+        }else{
+            return Product::where('product_status', 1)->where('product_id', $id)->first();
+        }
+    }
+
+    public function insertProductInformation($name, $supplier_id, $unit_id, $category_id, $quantity, $product_slug, $created_by){
+        return Product::insertGetId([
+            'name' => $name,
+            'supplier_id' => $supplier_id,
+            'unit_id' => $unit_id,
+            'category_id' => $category_id,
+            'quantity' => 0,
+            'product_slug' => $product_slug,
+            'created_by' => $created_by,
+            'created_at' => Carbon::now()
+        ]);
+    }
+
+    public function updateProductInformation($id, $name, $supplier_id, $unit_id, $category_id, $quantity, $product_slug, $updated_by){
+        return Product::where('product_id', $id)->update([
+            'name' => $name,
+            'supplier_id' => $supplier_id,
+            'unit_id' => $unit_id,
+            'category_id' => $category_id,
+            'quantity' => 0,
+            'product_slug' => $product_slug,
+            'updated_by' => $updated_by,
+            'updated_at' => Carbon::now()
+        ]);
+    }
+
+    public function deleteProductInformation($id){
+        return Product::where('product_id', $id)->update([
+            'product_status' => 0
         ]);
     }
 
