@@ -246,9 +246,9 @@ class ManageInfoService extends Controller{
 
     public function getPurchaseInformation($id){
         if($id == null){
-            return Purchase::where('purchase_status', 1)->get();
+            return Purchase::orderBy('date','desc')->orderBy('purchase_id','desc')->get();
         }else{
-            return Purchase::where('purchase_status', 1)->where('purchase_id', $id)->first();
+            return Purchase::where('purchase_id', $id)->first();
         }
     }
 

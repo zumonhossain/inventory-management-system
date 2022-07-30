@@ -26,19 +26,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>
-                                    <a href="#" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
-                                </td>
-                            </tr>
+                            @foreach($purchases as $key => $item)
+                                <tr>
+                                    <td> {{ $key+1}} </td>
+                                    <td> {{ $item->purchase_no }} </td> 
+                                    <td> {{ date('d-m-Y',strtotime($item->date))  }} </td> 
+                                    <td> {{ $item->supplier->name }} </td> 
+                                    <td> {{ $item->category->name }} </td> 
+                                    <td> {{ $item->buying_qty }} </td> 
+                                    <td> {{ $item->product->name }} </td>
+                                    <td> 
+                                        @if($item->purchase_status == '0')
+                                            <span class="btn btn-warning">Pending</span>
+                                        @elseif($item->purchase_status == '1')
+                                            <span class="btn btn-success">Approved</span>
+                                        @endif
+                                    </td> 
+                                    <td> 
+                                        @if($item->purchase_status == '0')
+                                            <a href="#" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
