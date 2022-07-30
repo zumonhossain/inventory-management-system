@@ -64,6 +64,11 @@
                     </div>
                 </div>
 
+
+
+                <!-- ====================================
+                            2nd Form UI Design Start
+                =======================================-->
                 <div class="card-body">
                     <form method="post" action="#">
                         @csrf
@@ -99,9 +104,15 @@
                         </div>
                     </form>
                 </div>
+                <!-- ====================================
+                            2nd Form UI Design End
+                =======================================-->
+
+
             </div>
         </div>
     </div>
+
 
 
     <script type="text/javascript">
@@ -141,6 +152,128 @@
                     }
                 })
             });
+        });
+    </script>
+
+    <script id="document-template" type="text/x-handlebars-template">
+        
+        <tr class="delete_add_more_item" id="delete_add_more_item">
+
+            <input type="hidden" name="date[]" value="@{{date}}">
+            <input type="hidden" name="purchase_no[]" value="@{{purchase_no}}">
+            <input type="hidden" name="supplier_id[]" value="@{{supplier_id}}">
+    
+            <td>
+                <input type="hidden" name="category_id[]" value="@{{category_id}}">
+                @{{ category_name }}
+            </td>
+            <td>
+                <input type="hidden" name="product_id[]" value="@{{product_id}}">
+                @{{ product_name }}
+            </td>
+            <td>
+                <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value=""> 
+            </td>
+            <td>
+                <input type="number" class="form-control unit_price text-right" name="unit_price[]" value=""> 
+            </td>
+            <td>
+                <input type="text" class="form-control" name="description[]"> 
+            </td>
+            <td>
+                <input type="number" class="form-control buying_price text-right" name="buying_price[]" value="0" readonly> 
+            </td>
+            <td>
+                <i class="btn btn-danger btn-sm fas fa-window-close removeeventmore"></i>
+            </td>
+            
+        </tr>
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on("click",".addeventmore", function(){
+
+                var date = $('#date').val();
+                var purchase_no = $('#purchase_no').val();
+                var supplier_id = $('#supplier_id').val();
+
+                var category_id  = $('#category_id').val();
+                var category_name = $('#category_id').find('option:selected').text();
+
+                var product_id = $('#product_id').val();
+                var product_name = $('#product_id').find('option:selected').text();
+
+                if(date == ''){
+                    $.notify("Date is Required" ,  {globalPosition: 'top right', className:'error' });
+                    return false;
+                }
+
+                if(purchase_no == ''){
+                    $.notify("Purchase No is Required" ,  {globalPosition: 'top right', className:'error' });
+                    return false;
+                }
+
+                if(supplier_id == ''){
+                    $.notify("Supplier is Required" ,  {globalPosition: 'top right', className:'error' });
+                    return false;
+                }
+
+                if(category_id == ''){
+                    $.notify("Category is Required" ,  {globalPosition: 'top right', className:'error' });
+                    return false;
+                }
+
+                if(product_id == ''){
+                    $.notify("Product Field is Required" ,  {globalPosition: 'top right', className:'error' });
+                    return false;
+                }
+
+                var source = $("#document-template").html();
+                var tamplate = Handlebars.compile(source);
+
+                var data = {
+                    date:date,
+                    purchase_no:purchase_no,
+                    supplier_id:supplier_id,
+                    category_id:category_id,
+                    category_name:category_name,
+                    product_id:product_id,
+                    product_name:product_name
+                };
+
+                var html = tamplate(data);
+                $("#addRow").append(html); 
+
+            });
+
+            $(document).on("click",".removeeventmore",function(event){
+                $(this).closest(".delete_add_more_item").remove();
+                totalAmountPrice();
+            });
+
+            $(document).on('keyup click','.unit_price,.buying_qty', function(){
+                var unit_price = $(this).closest("tr").find("input.unit_price").val();
+                var qty = $(this).closest("tr").find("input.buying_qty").val();
+                var total = unit_price * qty;
+                $(this).closest("tr").find("input.buying_price").val(total);
+                totalAmountPrice();
+            });
+
+            // Calculate sum of amout in invoice 
+            function totalAmountPrice(){
+                var sum = 0;
+                $(".buying_price").each(function(){
+                    var value = $(this).val();
+                    if(!isNaN(value) && value.length != 0){
+                        sum += parseFloat(value);
+                    }
+                });
+
+                $('#estimated_amount').val(sum);
+            }  
         });
     </script>
 

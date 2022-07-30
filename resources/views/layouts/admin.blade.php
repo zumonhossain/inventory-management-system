@@ -325,6 +325,8 @@
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/sweetalert2@10.js"></script>
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/code.js"></script>
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/validate.min.js"></script>
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/handlebars.js"></script>
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/notify.min.js"></script>
 
     </body>
 
