@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PurchaseController;
+use App\Http\Controllers\Admin\AjaxController;
 
 
 /*
@@ -83,6 +85,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/product/edit-product/{id}',[ProductController::class,'editProductForm'])->name('edit_product');
     Route::post('/product/update-product',[ProductController::class,'updateProductFormSubmit'])->name('update_product');
     Route::get('/product/delete-product/{id}',[ProductController::class,'deleteProduct'])->name('delete_product');
+    
+    // Purchase
+    Route::get('/purchase/all-purchase',[PurchaseController::class,'allPurchase'])->name('all_purchase');
+    Route::get('/purchase/add-purchase-form',[PurchaseController::class,'addPurchaseForm'])->name('add_purchase');
+    
+    // AjaxAllRouteCode
+    Route::get('/get-category',[AjaxController::class,'getCategory'])->name('get-category');
+    Route::get('/get-product',[AjaxController::class,'getProduct'])->name('get-product');
     
 });
 

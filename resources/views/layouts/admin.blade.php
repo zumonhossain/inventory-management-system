@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="utf-8" />
-        <title>Admin Dashboard</title>
+        <title>@yield('title')</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesdesign" name="author" />
@@ -204,6 +204,17 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('all_product') }}">All Product</a></li>
+                                
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="ri-hotel-fill"></i>
+                                    <span>Manage Purchase</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('all_purchase') }}">All Purchase</a></li>
                                 
                                 </ul>
                             </li>

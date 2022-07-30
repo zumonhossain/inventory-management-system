@@ -236,5 +236,20 @@ class ManageInfoService extends Controller{
 
 
 
+    /*
+    =================================================================
+    ========================== Purchase =============================
+    =================================================================
+    */
+
+
+    public function getPurchaseInformation($id){
+        if($id == null){
+            return Purchase::where('purchase_status', 1)->get();
+        }else{
+            return Purchase::where('purchase_status', 1)->where('purchase_id', $id)->first();
+        }
+    }
+    
 
 }
