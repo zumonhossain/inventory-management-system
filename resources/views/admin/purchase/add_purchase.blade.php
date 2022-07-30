@@ -30,7 +30,7 @@
                             <div class="md-3">
                                 <label for="example-text-input" class="form-label">Supplier Name </label>
                                 <select id="supplier_id" name="supplier_id" class="form-select select2" aria-label="Default select example">
-                                    <option selected="">Open this select menu</option>
+                                    <option selected="">-- Select Supplier --</option>
                                     @foreach($suppliers as $item)
                                         <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -41,7 +41,7 @@
                             <div class="md-3">
                                 <label for="example-text-input" class="form-label">Category Name </label>
                                 <select name="category_id" id="category_id" class="form-select select2" aria-label="Default select example">
-                                <option selected="">Open this select menu</option>
+                                <option selected=""></option>
                                 
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                             <div class="md-3">
                                 <label for="example-text-input" class="form-label">Product Name </label>
                                 <select name="product_id" id="product_id" class="form-select select2" aria-label="Default select example">
-                                <option selected="">Open this select menu</option>
+                                <option selected=""></option>
                             
                                 </select>
                             </div>
@@ -70,7 +70,7 @@
                             2nd Form UI Design Start
                 =======================================-->
                 <div class="card-body">
-                    <form method="post" action="#">
+                    <form method="post" action="{{ route('insert_purchase') }}">
                         @csrf
                         <table class="table-sm table-bordered" width="100%" style="border-color: #ddd;">
                             <thead>
@@ -172,10 +172,10 @@
                 @{{ product_name }}
             </td>
             <td>
-                <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value=""> 
+                <input type="number" min="1" class="form-control buying_qty text-right" name="buying_qty[]" value="" required=""> 
             </td>
             <td>
-                <input type="number" class="form-control unit_price text-right" name="unit_price[]" value=""> 
+                <input type="number" class="form-control unit_price text-right" name="unit_price[]" value="" required=""> 
             </td>
             <td>
                 <input type="text" class="form-control" name="description[]"> 
@@ -186,7 +186,7 @@
             <td>
                 <i class="btn btn-danger btn-sm fas fa-window-close removeeventmore"></i>
             </td>
-            
+
         </tr>
 
     </script>

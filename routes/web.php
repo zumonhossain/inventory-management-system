@@ -89,7 +89,7 @@ Route::group(['prefix'=>'admin'], function(){
     // Purchase
     Route::get('/purchase/all-purchase',[PurchaseController::class,'allPurchase'])->name('all_purchase');
     Route::get('/purchase/add-purchase-form',[PurchaseController::class,'addPurchaseForm'])->name('add_purchase');
-    
+    Route::post('/purchase/insert-new-purchase',[PurchaseController::class,'insertPurchaseFormSubmit'])->name('insert_purchase');
     // AjaxAllRouteCode
     Route::get('/get-category',[AjaxController::class,'getCategory'])->name('get-category');
     Route::get('/get-product',[AjaxController::class,'getProduct'])->name('get-product');

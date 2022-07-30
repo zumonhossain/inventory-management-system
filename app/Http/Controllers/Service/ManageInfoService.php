@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Unit;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Purchase;
 use Carbon\Carbon;
 use Auth;
 
@@ -249,6 +250,23 @@ class ManageInfoService extends Controller{
         }else{
             return Purchase::where('purchase_status', 1)->where('purchase_id', $id)->first();
         }
+    }
+
+    public function insertPurchaseInformation($date, $purchase_no, $supplier_id, $category_id, $product_id, $buying_qty, $unit_price, $buying_price, $description, $purchase_slug, $created_by){
+        return Purchase::insertGetId([
+            'date' => $date,
+            'purchase_no' => $purchase_no,
+            'supplier_id' => $supplier_id,
+            'category_id' => $category_id,
+            'product_id' => $product_id,
+            'buying_qty' => $buying_qty,
+            'unit_price' => $unit_price,
+            'buying_price' => $buying_price,
+            'description' => $description,
+            'purchase_slug' => $purchase_slug,
+            'created_by' => $created_by,
+            'created_at' => Carbon::now()
+        ]);
     }
     
 
