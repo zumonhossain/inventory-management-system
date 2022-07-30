@@ -247,7 +247,8 @@ class ManageInfoService extends Controller{
     public function getPurchaseInformation($id){
         if($id == null){
             return Purchase::orderBy('date','desc')->orderBy('purchase_id','desc')->get();
-        }else{
+        }
+        else{
             return Purchase::where('purchase_id', $id)->first();
         }
     }
@@ -268,6 +269,24 @@ class ManageInfoService extends Controller{
             'created_at' => Carbon::now()
         ]);
     }
+
+    public function deletePurchaseInformation($id){
+        return Purchase::where('purchase_id', $id)->delete();
+    }
     
+    public function getPurchaseInPendingInformation($id){
+        if($id == null){
+            return Purchase::where('purchase_status',0)->orderBy('date','desc')->orderBy('purchase_id','desc')->get();
+        }
+        else{
+            return Purchase::where('purchase_id', $id)->first();
+        }
+    }
+
+    public function approvePurchaseInformation($id){
+        return Purchase::where('purchase_id', $id)->update([
+            'purchase_status' => 1
+        ]);
+    }
 
 }

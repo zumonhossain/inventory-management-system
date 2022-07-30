@@ -56,4 +56,29 @@ class PurchaseController extends Controller{
             return redirect()->route('all_purchase')->with($notification);
         }
     }    
+
+    public function deletePurchase($id){
+        (new ManageInfoService())->deletePurchaseInformation($id);
+
+        $notification = array(
+            'message' => 'Purchase Item Delete Successfully!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function pendingPurchase(){
+        $purchases = (new ManageInfoService())->getPurchaseInPendingInformation(null);
+        return view('admin.purchase.pending_purchase',compact('purchases'));
+    }
+
+    public function approvePurchase($id){
+        (new ManageInfoService())->approvePurchaseInformation($id);
+
+        $notification = array(
+            'message' => 'Status Approved Successfully!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all_purchase')->with($notification);
+    }
 }

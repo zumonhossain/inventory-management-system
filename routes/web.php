@@ -90,6 +90,9 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/purchase/all-purchase',[PurchaseController::class,'allPurchase'])->name('all_purchase');
     Route::get('/purchase/add-purchase-form',[PurchaseController::class,'addPurchaseForm'])->name('add_purchase');
     Route::post('/purchase/insert-new-purchase',[PurchaseController::class,'insertPurchaseFormSubmit'])->name('insert_purchase');
+    Route::get('/purchase/delete-purchase/{id}',[PurchaseController::class,'deletePurchase'])->name('delete_purchase');
+    Route::get('/purchase/pending-purchase',[PurchaseController::class,'pendingPurchase'])->name('pending_purchase');
+    Route::get('/purchase/approve-purchase/{id}',[PurchaseController::class,'approvePurchase'])->name('approve_purchase');
     // AjaxAllRouteCode
     Route::get('/get-category',[AjaxController::class,'getCategory'])->name('get-category');
     Route::get('/get-product',[AjaxController::class,'getProduct'])->name('get-product');
