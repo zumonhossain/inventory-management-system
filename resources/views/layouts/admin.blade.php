@@ -17,7 +17,9 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('contents/admin') }}/assets/images/favicon.ico">
 
-        <!-- jquery.vectormap css -->
+        <!-- select2 -->
+        <link href="{{ asset('contents/admin') }}/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
         <link href="{{ asset('contents/admin') }}/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
 
         <!-- DataTables -->
@@ -328,6 +330,9 @@
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/validate.min.js"></script>
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/handlebars.js"></script>
         <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/notify.min.js"></script>
+
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/libs/select2/js/select2.min.js"></script>
+        <script type="text/javascript" src="{{ asset('contents/admin') }}/assets/js/pages/form-advanced.init.js"></script>
 
     </body>
 
