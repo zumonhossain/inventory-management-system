@@ -222,6 +222,16 @@
                                 </ul>
                             </li>
 
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="ri-hotel-fill"></i>
+                                    <span>Manage Invoice</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('all_invoice') }}">All Invoice</a></li>
+                                </ul>
+                            </li>
+
                             <li class="menu-title">Pages</li>
 
                             <li>

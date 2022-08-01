@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\AjaxController;
+use App\Http\Controllers\Admin\InvoiceController;
 
 
 /*
@@ -93,9 +94,15 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/purchase/delete-purchase/{id}',[PurchaseController::class,'deletePurchase'])->name('delete_purchase');
     Route::get('/purchase/pending-purchase',[PurchaseController::class,'pendingPurchase'])->name('pending_purchase');
     Route::get('/purchase/approve-purchase/{id}',[PurchaseController::class,'approvePurchase'])->name('approve_purchase');
-    // AjaxAllRouteCode
+    // AjaxPurchaseRouteCode
     Route::get('/get-category',[AjaxController::class,'getCategory'])->name('get-category');
     Route::get('/get-product',[AjaxController::class,'getProduct'])->name('get-product');
+
+    // Invoice
+    Route::get('/invoice/all-invoice',[InvoiceController::class,'allInvoice'])->name('all_invoice');
+    Route::get('/invoice/add-invoice-form',[InvoiceController::class,'addInvoiceForm'])->name('add_invoice');
+    // AjaxInvoiceRouteCode
+    Route::get('/check-stock',[AjaxController::class,'getStock'])->name('check-product-stock');
     
 });
 
