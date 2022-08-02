@@ -12,8 +12,16 @@ class InvoiceController extends Controller{
     }
 
     public function addInvoiceForm(){
+        $numberOfInvoiceNo = (new ManageInfoService())->createInvoiceNo();
         $customers = (new ManageInfoService())->getCustomerInformation(null);
         $categories = (new ManageInfoService())->getCategoryInformation(null);
-        return view('admin.invoice.add_invoice',compact('categories','customers'));
+        return view('admin.invoice.add_invoice',compact('categories','customers','numberOfInvoiceNo'));
+    }
+
+    public function insertInvoiceFormSubmit(Request $request){
+        // dd($request->all());
+        (new ManageInfoService())->insertInvoiceInformation(
+
+        );
     }
 }

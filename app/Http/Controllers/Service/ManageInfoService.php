@@ -10,6 +10,7 @@ use App\Models\Unit;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Purchase;
+use App\Models\Invoice;
 use Carbon\Carbon;
 use Auth;
 
@@ -288,5 +289,43 @@ class ManageInfoService extends Controller{
             'purchase_status' => 1
         ]);
     }
+
+
+    /*
+    =================================================================
+    ========================== Invoice ==============================
+    =================================================================
+    */
+
+
+    public function getInvoiceInformation($id){
+        if($id == null){
+            return Invoice::orderBy('date','desc')->orderBy('invoice_id','desc')->get();
+        }
+        else{
+            return Invoice::where('invoice_id', $id)->first();
+        }
+    }
+
+    public function getTotalNumberOfInvoiceNo(){
+        return (Invoice::get()->count());
+    }
+
+    public function createInvoiceNo(){
+        return $this->getTotalNumberOfInvoiceNo() + 101;
+    }
+    
+    public function insertInvoiceInformation($invoice_no, $date, $description, $created_by){
+        return Invoice::insertGetId([
+            'invoice_no' => $invoice_no == null ? '101' : $invoice_no,
+            'date' => $date,
+            'description' => $description,
+            'created_by' => $created_by,
+            'created_at' => Carbon::now()
+        ]);
+    }
+
+
+
 
 }
