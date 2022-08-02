@@ -23,14 +23,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                                <td>..</td>
-                            </tr>
+                            @foreach($invoice as $key => $item)
+                                <tr>
+                                    <td> {{ $key+1}} </td>
+                                    <td> {{ $item->payment->customer_id }}</td> 
+                                    <td> #{{ $item->invoice_no }} </td> 
+                                    <td> {{ date('d-m-Y',strtotime($item->date))  }} </td> 
+                                    
+                                    
+                                    <td>  {{ $item->description }} </td> 
+
+                                    <td>  $ {{ $item->payment->total_amount }} </td>
+                                    <!-- <td>  $ {{ $item['payment']['total_amount'] }} </td> -->
+                                
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

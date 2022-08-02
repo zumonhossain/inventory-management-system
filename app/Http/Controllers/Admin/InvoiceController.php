@@ -17,7 +17,8 @@ use DB;
 
 class InvoiceController extends Controller{
     public function allInvoice(){
-        return view('admin.invoice.all_invoice');
+        $invoice = (new ManageInfoService())->getInvoiceInformation(null);
+        return view('admin.invoice.all_invoice',compact('invoice'));
     }
 
     public function addInvoiceForm(){
