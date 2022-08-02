@@ -22,3 +22,6 @@ a.all_link {
     font-size: 15px;
     text-transform: uppercase;
 }
+.require_star {
+    color: red;
+}

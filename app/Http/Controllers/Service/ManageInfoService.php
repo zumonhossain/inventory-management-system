@@ -307,24 +307,7 @@ class ManageInfoService extends Controller{
         }
     }
 
-    public function getTotalNumberOfInvoiceNo(){
-        return (Invoice::get()->count());
-    }
-
-    public function createInvoiceNo(){
-        return $this->getTotalNumberOfInvoiceNo() + 101;
-    }
     
-    public function insertInvoiceInformation($invoice_no, $date, $description, $created_by){
-        return Invoice::insertGetId([
-            'invoice_no' => $invoice_no == null ? '101' : $invoice_no,
-            'date' => $date,
-            'description' => $description,
-            'created_by' => $created_by,
-            'created_at' => Carbon::now()
-        ]);
-    }
-
 
 
 

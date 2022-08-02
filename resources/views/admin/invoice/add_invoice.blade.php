@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    All Invoice
+    Add Invoice
 @endsection
 @section('content')
     <div class="row">
@@ -18,19 +18,19 @@
                     <div class="row">
                         <div class="col-md-1">
                             <div class="md-3">
-                                <label for="example-text-input" class="form-label">Inv No</label>
-                                <input class="form-control example-date-input" name="invoice_no" type="text" value="{{ $numberOfInvoiceNo }}"  id="invoice_no" readonly style="background-color:#ddd" >
+                                <label for="example-text-input" class="form-label">Inv No <span class="require_star">*</span></label>
+                                <input class="form-control example-date-input" name="invoice_no" type="text" value="{{ $invoice_no }}"  id="invoice_no" readonly style="background-color:#ddd" >
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="md-3">
-                                <label for="example-text-input" class="form-label">Date</label>
-                                <input class="form-control example-date-input" name="date" value="{{ date('Y-m-d') }}" type="date"  id="date">
+                                <label for="example-text-input" class="form-label">Date <span class="require_star">*</span></label>
+                                <input class="form-control example-date-input" name="date" value="{{ $date }}" type="date"  id="date">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="md-3">
-                                <label for="example-text-input" class="form-label">Category Name </label>
+                                <label for="example-text-input" class="form-label">Category Name <span class="require_star">*</span></label>
                                 <select id="category_id" name="category_id" class="form-select select2" aria-label="Default select example">
                                     <option selected="">-- Select Category --</option>
                                     @foreach($categories as $item)
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="md-3">
-                                <label for="example-text-input" class="form-label">Product Name </label>
+                                <label for="example-text-input" class="form-label">Product Name <span class="require_star">*</span></label>
                                 <select name="product_id" id="product_id" class="form-select select2" aria-label="Default select example">
                                 <option selected=""></option>
                             
@@ -72,7 +72,7 @@
                             2nd Form UI Design Start
                 =======================================-->
                 <div class="card-body">
-                    <form method="post" action="#">
+                    <form method="post" action="{{ route('insert_invoice') }}" id="myForm">
 
                         @csrf
 
@@ -122,7 +122,7 @@
 
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <label> Paid Status </label>
+                                <label> Paid Status <span class="require_star">*</span></label>
                                 <select name="paid_status" id="paid_status" class="form-select">
                                     <option value="">Select Status </option>
                                     <option value="full_paid">Full Paid </option>
@@ -133,7 +133,7 @@
                             </div>
 
                             <div class="form-group col-md-9">
-                                <label> Customer Name  </label>
+                                <label> Customer Name  <span class="require_star">*</span></label>
                                 <select name="customer_id" id="customer_id" class="form-select">
                                     <option value="">Select Customer </option>
                                     @foreach($customers as $item)
@@ -147,7 +147,7 @@
                         <br>
 
                         <!-- Hide Add Customer Form -->
-                        <div class="row new_customer" >
+                        <div class="row new_customer" style="display:none;">
                             <div class="form-group col-md-4">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Write Customer Name">
                             </div>
@@ -218,8 +218,8 @@
 
         <tr class="delete_add_more_item" id="delete_add_more_item">
 
-            <input type="text" name="invoice_no" value="@{{ invoice_no }}">
-            <input type="text" name="data" value="@{{ date }}">
+            <input type="hidden" name="invoice_no" value="@{{ invoice_no }}">
+            <input type="hidden" name="data" value="@{{ date }}">
 
             <td>
                 <input type="hidden" name="category_id[]" value="@{{category_id}}">
@@ -230,10 +230,10 @@
                 @{{ product_name }}
             </td>
             <td>
-                <input type="number" min="1" class="form-control selling_qty text-right" name="selling_qty[]" value=""> 
+                <input type="number" min="1" class="form-control selling_qty text-right" name="selling_qty[]" value="" > 
             </td>
             <td>
-                <input type="number" class="form-control unit_price text-right" name="unit_price[]" value=""> 
+                <input type="number" class="form-control unit_price text-right" name="unit_price[]" value="" > 
             </td>
             <td>
                 <input type="number" class="form-control selling_price text-right" name="selling_price[]" value="0" readonly> 
@@ -328,6 +328,12 @@
         });
     </script>
 
+
+
+
+
+
+
     <script type="text/javascript">
 
         $(document).on('change','#paid_status', function(){
@@ -349,5 +355,52 @@
         });
 
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#myForm').validate({
+                rules: {
+                    paid_status: {
+                        required : true,
+                    },
+                    customer_id: {
+                        required : true,
+                    },
+                },
+                messages :{
+                    paid_status: {
+                        required : 'Please Enter paid_status',
+                    },
+                    customer_id: {
+                        required : 'Please Enter customer_id',
+                    },
+                },
+                errorElement : 'span', 
+                errorPlacement: function (error,element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight : function(element, errorClass, validClass){
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight : function(element, errorClass, validClass){
+                    $(element).removeClass('is-invalid');
+                },
+            });
+        });
+    </script>
+
 
 @endsection

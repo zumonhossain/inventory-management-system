@@ -103,6 +103,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/invoice/add-invoice-form',[InvoiceController::class,'addInvoiceForm'])->name('add_invoice');
     // AjaxInvoiceRouteCode
     Route::get('/check-stock',[AjaxController::class,'getStock'])->name('check-product-stock');
+    Route::post('/invoice/insert-new-invoice',[InvoiceController::class,'insertInvoiceFormSubmit'])->name('insert_invoice');
     
 });
 
