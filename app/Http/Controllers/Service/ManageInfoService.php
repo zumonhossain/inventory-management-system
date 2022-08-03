@@ -300,14 +300,13 @@ class ManageInfoService extends Controller{
 
     public function getInvoiceInformation($id){
         if($id == null){
-            return Invoice::orderBy('date','desc')->orderBy('invoice_id','desc')->get();
+            return Invoice::where('invoice_status',1)->orderBy('date','desc')->orderBy('id','desc')->get();
         }
         else{
-            return Invoice::where('invoice_id', $id)->first();
+            return Invoice::where('id', $id)->first();
         }
     }
 
-    
 
 
 

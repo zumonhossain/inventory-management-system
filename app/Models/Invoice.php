@@ -11,7 +11,7 @@ class Invoice extends Model{
     protected $guarded =[];
 
     public function payment(){
-        return $this->belongsTo(Payment::class,'invoice_id','invoice_id');
+        return $this->belongsTo(Payment::class,'id','invoice_id');
     }
 
     

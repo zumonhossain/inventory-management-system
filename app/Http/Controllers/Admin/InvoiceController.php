@@ -24,12 +24,12 @@ class InvoiceController extends Controller{
     public function addInvoiceForm(){
         $categories = Category::all();
         $customers = Customer::all();
-        $invoice_data = Invoice::orderBy('invoice_id','desc')->first();
+        $invoice_data = Invoice::orderBy('id','desc')->first();
         if ($invoice_data == null) {
            $firstReg = '0';
            $invoice_no = $firstReg+1;
         }else{
-            $invoice_data = Invoice::orderBy('invoice_id','desc')->first()->invoice_no;
+            $invoice_data = Invoice::orderBy('id','desc')->first()->invoice_no;
             $invoice_no = $invoice_data+1;
         }
         $date = date('Y-m-d');
@@ -142,7 +142,32 @@ class InvoiceController extends Controller{
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all_invoice')->with($notification);  
+        return redirect()->route('pending_invoice')->with($notification);  
     } 
+
+    public function pendingInvoice(){
+        $invoice = Invoice::where('invoice_status',0)->orderBy('id','desc')->get();
+        return view('admin.invoice.pending_invoice',compact('invoice'));
+    }
+
+    public function deleteInvoice($id){
+
+        $invoice = Invoice::findOrFail($id);
+        $invoice->delete();
+
+        InvoiceDetail::where('invoice_id',$invoice->id)->delete(); 
+        Payment::where('invoice_id',$invoice->id)->delete(); 
+        PaymentDetail::where('invoice_id',$invoice->id)->delete(); 
+
+        $notification = array(
+            'message' => 'Invoice Deleted Successfully', 
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification); 
+    }
+
+    
+
 
 }

@@ -229,6 +229,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('all_invoice') }}">All Invoice</a></li>
+                                    <li><a href="{{ route('pending_invoice') }}">Approval Invoice</a></li>
                                 </ul>
                             </li>
 
