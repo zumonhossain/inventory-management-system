@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ManageInfoService;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\Payment;
@@ -166,6 +167,13 @@ class InvoiceController extends Controller{
 
         return redirect()->back()->with($notification); 
     }
+
+    public function approveInvoice($id){
+        $invoice = Invoice::with('invoice_details')->findOrFail($id);
+        $payment = Payment::where('invoice_id',$invoice->id)->first();
+        return view('admin.invoice.approve_invoice',compact('invoice','payment'));
+    }
+
 
     
 
