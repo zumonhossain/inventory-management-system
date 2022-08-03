@@ -174,7 +174,26 @@ class InvoiceController extends Controller{
         return view('admin.invoice.approve_invoice',compact('invoice','payment'));
     }
 
+    public function insertApproveInvoiceFormSubmit(Request $request, $id){
 
+        foreach($request->selling_qty as $key => $val){
+
+            $invoice_details = InvoiceDetail::where('id',$key)->first();
+            $product = Product::where('product_id',$invoice_details->product_id)->first();
+
+            if($product->quantity < $request->selling_qty[$key]){
+
+                $notification = array(
+                    'message' => 'Sorry you approve Maximum Value', 
+                    'alert-type' => 'error'
+                );
+                
+                return redirect()->back()->with($notification); 
+            }
+        } // End foreach 
+
+        
+    }
     
 
 
