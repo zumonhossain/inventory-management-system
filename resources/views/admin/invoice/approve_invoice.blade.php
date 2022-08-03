@@ -43,7 +43,7 @@
                         </tbody>
                     </table>
 
-                    <form method="post" action="{{ route('insert_approve_invoice',$invoice->id) }}">
+                    <form method="post" action="">
                         @csrf
 
                         <table id="datatable" class="table bg-warning table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

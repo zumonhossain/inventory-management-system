@@ -10,20 +10,20 @@ class Purchase extends Model{
 
     protected $guarded =[];
 
-    public function supplier(){
-        return $this->hasOne('App\Models\Supplier','supplier_id','supplier_id');
+    public function product(){
+        return $this->belongsTo(Product::class,'product_id','id');
     }
-
+ 
+    public function supplier(){
+        return $this->belongsTo(Supplier::class,'supplier_id','id');
+    }
+ 
     public function unit(){
-        return $this->hasOne('App\Models\Unit','unit_id','unit_id');
+        return $this->belongsTo(Unit::class,'unit_id','id');
     }
 
     public function category(){
-        return $this->hasOne('App\Models\Category','category_id','category_id');
-    }
-
-    public function product(){
-        return $this->hasOne('App\Models\Product','product_id','product_id');
+        return $this->belongsTo(Category::class,'category_id','id');
     }
     
 }

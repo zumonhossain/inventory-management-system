@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('update_unit') }}" id="myForm" >
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $unit->unit_id }}">
+                        <input type="hidden" name="id" value="{{ $unit->id }}">
 
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Unit Name </label>

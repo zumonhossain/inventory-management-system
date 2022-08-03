@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('update_category') }}" id="myForm" >
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $category->category_id }}">
+                        <input type="hidden" name="id" value="{{ $category->id }}">
 
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Category Name </label>

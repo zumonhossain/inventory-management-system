@@ -34,7 +34,7 @@
                                 <select id="category_id" name="category_id" class="form-select select2" aria-label="Default select example">
                                     <option selected="">-- Select Category --</option>
                                     @foreach($categories as $item)
-                                        <option value="{{ $item->category_id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -137,7 +137,7 @@
                                 <select name="customer_id" id="customer_id" class="form-select">
                                     <option value="">Select Customer </option>
                                     @foreach($customers as $item)
-                                        <option value="{{ $item->customer_id }}">{{ $item->name }} - {{ $item->mobile_no }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->mobile_no }}</option>
                                     @endforeach
                                     <option value="0">New Customer </option>
                                 </select>
@@ -187,7 +187,7 @@
                     success:function(data){
                         var html = '<option value="">Select Product</option>';
                         $.each(data,function(key,v){
-                            html += '<option value=" '+v.product_id+' "> '+v.name+'</option>';
+                            html += '<option value=" '+v.id+' "> '+v.name+'</option>';
                         });
                         $('#product_id').html(html);
                     }
@@ -211,6 +211,7 @@
             });
         });
     </script>
+
 
 
 

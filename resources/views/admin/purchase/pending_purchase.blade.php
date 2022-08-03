@@ -44,7 +44,7 @@
                                     </td>
                                     <td> 
                                         @if($item->purchase_status == '0')
-                                        <a href="{{ route('approve_purchase',$item->purchase_id) }}" class="btn btn-danger sm" title="Approved" id="approveBtn">  <i class="fas fa-check-circle"></i> </a>
+                                        <a href="{{ route('approve_purchase',$item->id) }}" class="btn btn-danger sm" title="Approved" id="approveBtn">  <i class="fas fa-check-circle"></i> </a>
                                         @endif
                                     </td>
                                 </tr>

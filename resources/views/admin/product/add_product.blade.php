@@ -28,7 +28,7 @@
                                 <select name="supplier_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($suppliers as $item)
-                                        <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -39,7 +39,7 @@
                                 <select name="unit_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($units as $item)
-                                        <option value="{{ $item->unit_id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                                 <select name="category_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($categories as $item)
-                                        <option value="{{ $item->category_id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

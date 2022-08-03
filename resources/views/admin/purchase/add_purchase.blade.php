@@ -32,7 +32,7 @@
                                 <select id="supplier_id" name="supplier_id" class="form-select select2" aria-label="Default select example">
                                     <option selected="">-- Select Supplier --</option>
                                     @foreach($suppliers as $item)
-                                        <option value="{{ $item->supplier_id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,7 +146,7 @@
                     success:function(data){
                         var html = '<option value="">Select Product</option>';
                         $.each(data,function(key,v){
-                            html += '<option value=" '+v.product_id+' "> '+v.name+'</option>';
+                            html += '<option value=" '+v.id+' "> '+v.name+'</option>';
                         });
                         $('#product_id').html(html);
                     }

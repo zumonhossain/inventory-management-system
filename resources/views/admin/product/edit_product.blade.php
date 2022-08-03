@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('update_product') }}" id="myForm" >
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $product->product_id }}">
+                        <input type="hidden" name="id" value="{{ $product->id }}">
 
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-form-label">Product Name </label>
@@ -30,7 +30,7 @@
                                 <select name="supplier_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($suppliers as $item)
-                                        <option value="{{ $item->supplier_id }}" {{ $item->supplier_id == $product->supplier_id ? 'selected' : '' }}   >{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == $product->supplier_id ? 'selected' : '' }}   >{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -41,7 +41,7 @@
                                 <select name="unit_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($units as $item)
-                                        <option value="{{ $item->unit_id }}" {{ $item->unit_id == $product->unit_id ? 'selected' : '' }} >{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == $product->unit_id ? 'selected' : '' }} >{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -52,7 +52,7 @@
                                 <select name="category_id" class="form-select" aria-label="Default select example">
                                     <option selected="">Open this select menu</option>
                                     @foreach($categories as $item)
-                                        <option value="{{ $item->category_id }}" {{ $item->category_id == $product->category_id ? 'selected' : '' }}>{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == $product->category_id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -25,8 +25,8 @@
                                     <td> {{ $key+1}} </td>
                                     <td> {{ $item->name }} </td>
                                     <td>
-                                        <a href="{{ route('edit_category',$item->category_id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
-                                        <a href="{{ route('delete_category',$item->category_id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                        <a href="{{ route('edit_category',$item->id) }}" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
+                                        <a href="{{ route('delete_category',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr>
                             @endforeach

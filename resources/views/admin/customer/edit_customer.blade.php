@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('update_customer') }}" id="myForm" enctype="multipart/form-data" >
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $customer->customer_id }}">
+                        <input type="hidden" name="id" value="{{ $customer->id }}">
 
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Customer Name </label>

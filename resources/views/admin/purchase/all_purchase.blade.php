@@ -44,7 +44,7 @@
                                     </td> 
                                     <td> 
                                         @if($item->purchase_status == '0')
-                                            <a href="{{ route('delete_purchase',$item->purchase_id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
+                                            <a href="{{ route('delete_purchase',$item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                         @endif
                                     </td>
                                 </tr>

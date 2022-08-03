@@ -26,7 +26,7 @@ class ManageInfoService extends Controller{
         if($id == null){
             return Supplier::where('supplier_status', 1)->get();
         }else{
-            return Supplier::where('supplier_status', 1)->where('supplier_id', $id)->first();
+            return Supplier::where('supplier_status', 1)->where('id', $id)->first();
         }
     }
 
@@ -44,7 +44,7 @@ class ManageInfoService extends Controller{
     }
 
     public function updateSupplierInformation($id, $name, $mobile_no, $email, $address, $supplier_slug, $updated_by){
-        return Supplier::where('supplier_id', $id)->update([
+        return Supplier::where('id', $id)->update([
             'name' => $name,
             'mobile_no' => $mobile_no,
             'mobile_no' => $mobile_no,
@@ -57,7 +57,7 @@ class ManageInfoService extends Controller{
     }
 
     public function deleteSupplierInformation($id){
-        return Supplier::where('supplier_id', $id)->update([
+        return Supplier::where('id', $id)->update([
             'supplier_status' => 0
         ]);
     }
@@ -73,7 +73,7 @@ class ManageInfoService extends Controller{
         if($id == null){
             return Customer::where('customer_status', 1)->get();
         }else{
-            return Customer::where('customer_status', 1)->where('customer_id', $id)->first();
+            return Customer::where('customer_status', 1)->where('id', $id)->first();
         }
     }
 
@@ -91,7 +91,7 @@ class ManageInfoService extends Controller{
     }
 
     public function updateCustomerInformation($id, $name, $customer_image, $mobile_no, $email, $address, $customer_slug, $updated_by){
-        return Customer::where('customer_id', $id)->update([
+        return Customer::where('id', $id)->update([
             'name' => $name,
             'customer_image' => $customer_image,
             'mobile_no' => $mobile_no,
@@ -104,7 +104,7 @@ class ManageInfoService extends Controller{
     }
 
     public function deleteCustomerInformation($id){
-        return Customer::where('customer_id', $id)->update([
+        return Customer::where('id', $id)->update([
             'customer_status' => 0
         ]);
     }
@@ -121,7 +121,7 @@ class ManageInfoService extends Controller{
         if($id == null){
             return Unit::where('unit_status', 1)->get();
         }else{
-            return Unit::where('unit_status', 1)->where('unit_id', $id)->first();
+            return Unit::where('unit_status', 1)->where('id', $id)->first();
         }
     }
 
@@ -135,7 +135,7 @@ class ManageInfoService extends Controller{
     }
 
     public function updateUnitInformation($id, $name, $unit_slug, $updated_by){
-        return Unit::where('unit_id', $id)->update([
+        return Unit::where('id', $id)->update([
             'name' => $name,
             'unit_slug' => $unit_slug,
             'updated_by' => $updated_by,
@@ -144,7 +144,7 @@ class ManageInfoService extends Controller{
     }
 
     public function deleteUnitInformation($id){
-        return Unit::where('unit_id', $id)->update([
+        return Unit::where('id', $id)->update([
             'unit_status' => 0
         ]);
     }
@@ -160,7 +160,7 @@ class ManageInfoService extends Controller{
         if($id == null){
             return Category::where('category_status', 1)->get();
         }else{
-            return Category::where('category_status', 1)->where('category_id', $id)->first();
+            return Category::where('category_status', 1)->where('id', $id)->first();
         }
     }
 
@@ -174,7 +174,7 @@ class ManageInfoService extends Controller{
     }
 
     public function updateCategoryInformation($id, $name, $category_slug, $updated_by){
-        return Category::where('category_id', $id)->update([
+        return Category::where('id', $id)->update([
             'name' => $name,
             'category_slug' => $category_slug,
             'updated_by' => $updated_by,
@@ -183,7 +183,7 @@ class ManageInfoService extends Controller{
     }
 
     public function deleteCategoryInformation($id){
-        return Category::where('category_id', $id)->update([
+        return Category::where('id', $id)->update([
             'category_status' => 0
         ]);
     }
@@ -200,7 +200,7 @@ class ManageInfoService extends Controller{
         if($id == null){
             return Product::where('product_status', 1)->get();
         }else{
-            return Product::where('product_status', 1)->where('product_id', $id)->first();
+            return Product::where('product_status', 1)->where('id', $id)->first();
         }
     }
 
@@ -218,7 +218,7 @@ class ManageInfoService extends Controller{
     }
 
     public function updateProductInformation($id, $name, $supplier_id, $unit_id, $category_id, $quantity, $product_slug, $updated_by){
-        return Product::where('product_id', $id)->update([
+        return Product::where('id', $id)->update([
             'name' => $name,
             'supplier_id' => $supplier_id,
             'unit_id' => $unit_id,
@@ -231,7 +231,7 @@ class ManageInfoService extends Controller{
     }
 
     public function deleteProductInformation($id){
-        return Product::where('product_id', $id)->update([
+        return Product::where('id', $id)->update([
             'product_status' => 0
         ]);
     }
@@ -247,10 +247,10 @@ class ManageInfoService extends Controller{
 
     public function getPurchaseInformation($id){
         if($id == null){
-            return Purchase::orderBy('date','desc')->orderBy('purchase_id','desc')->get();
+            return Purchase::orderBy('date','desc')->orderBy('id','desc')->get();
         }
         else{
-            return Purchase::where('purchase_id', $id)->first();
+            return Purchase::where('id', $id)->first();
         }
     }
 
@@ -272,20 +272,20 @@ class ManageInfoService extends Controller{
     }
 
     public function deletePurchaseInformation($id){
-        return Purchase::where('purchase_id', $id)->delete();
+        return Purchase::where('id', $id)->delete();
     }
     
     public function getPurchaseInPendingInformation($id){
         if($id == null){
-            return Purchase::where('purchase_status',0)->orderBy('date','desc')->orderBy('purchase_id','desc')->get();
+            return Purchase::where('purchase_status',0)->orderBy('date','desc')->orderBy('id','desc')->get();
         }
         else{
-            return Purchase::where('purchase_id', $id)->first();
+            return Purchase::where('id', $id)->first();
         }
     }
 
     public function approvePurchaseInformation($id){
-        return Purchase::where('purchase_id', $id)->update([
+        return Purchase::where('id', $id)->update([
             'purchase_status' => 1
         ]);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Edit Profile
+    Edit Supplier
 @endsection
 @section('content')
     <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>
@@ -16,7 +16,7 @@
                     <form method="post" action="{{ route('supplier_update_form') }}" id="myForm" >
                         @csrf
 
-                        <input type="hidden" name="id" value="{{ $supplier->supplier_id }}">
+                        <input type="hidden" name="id" value="{{ $supplier->id }}">
 
                         <div class="row mb-3">
                             <label for="example-text-input" class="col-sm-2 col-form-label">Supplier Name </label>

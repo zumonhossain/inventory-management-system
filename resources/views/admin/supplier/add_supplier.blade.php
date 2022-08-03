@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Add Unit
+    Add Supplier
 @endsection
 @section('content')
     <script src="{{ asset('contents/admin') }}/assets/libs/jquery/jquery.min.js"></script>

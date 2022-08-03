@@ -14,7 +14,7 @@ class CreatePurchasesTable extends Migration
     public function up()
     {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->id('purchase_id');
+            $table->id();
             $table->integer('supplier_id');
             $table->integer('category_id');
             $table->integer('product_id');

@@ -107,7 +107,6 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/invoice/delete-invoice/{id}',[InvoiceController::class,'deleteInvoice'])->name('delete_invoice');
     Route::get('/invoice/approve-invoice/{id}',[InvoiceController::class,'approveInvoice'])->name('approve_invoice');
     
-    Route::post('/invoice/insert-approve-invoice/{id}',[InvoiceController::class,'insertApproveInvoiceFormSubmit'])->name('insert_approve_invoice');
 
     // AjaxInvoiceRouteCode
     Route::get('/check-stock',[AjaxController::class,'getStock'])->name('check-product-stock');

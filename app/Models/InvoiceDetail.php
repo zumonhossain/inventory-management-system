@@ -11,10 +11,11 @@ class InvoiceDetail extends Model{
     protected $guarded =[];
     
     public function product(){
-        return $this->belongsTo(Product::class,'product_id','product_id');
+        return $this->belongsTo(Product::class,'product_id','id');
     }
-    
+  
+
     public function category(){
-        return $this->belongsTo(Category::class,'category_id','category_id');
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 }
