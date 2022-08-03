@@ -298,16 +298,5 @@ class ManageInfoService extends Controller{
     */
 
 
-    public function getInvoiceInformation($id){
-        if($id == null){
-            return Invoice::where('invoice_status',1)->orderBy('date','desc')->orderBy('id','desc')->get();
-        }
-        else{
-            return Invoice::where('id', $id)->first();
-        }
-    }
-
-
-
 
 }

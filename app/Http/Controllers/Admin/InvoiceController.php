@@ -17,7 +17,7 @@ use DB;
 
 class InvoiceController extends Controller{
     public function allInvoice(){
-        $invoice = (new ManageInfoService())->getInvoiceInformation(null);
+        $invoice = Invoice::where('invoice_status',1)->orderBy('date','desc')->orderBy('id','desc')->get();
         return view('admin.invoice.all_invoice',compact('invoice'));
     }
 
