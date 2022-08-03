@@ -277,6 +277,52 @@ class InvoiceController extends Controller{
         return view('admin.invoice.approve_invoice',compact('invoice','payment'));
     }
 
+    public function insertApproveInvoiceFormSubmit(Request $request, $id){
+
+        foreach($request->selling_qty as $key => $val){
+
+            $invoice_details = InvoiceDetail::where('id',$key)->first();
+            $product = Product::where('id',$invoice_details->product_id)->first();
+
+            if($product->quantity < $request->selling_qty[$key]){
+
+                $notification = array(
+                    'message' => 'Sorry you approve Maximum Value', 
+                    'alert-type' => 'error'
+                );
+                
+                return redirect()->back()->with($notification); 
+            }
+        } // End foreach 
+
+        $invoice = Invoice::findOrFail($id);
+        $invoice->updated_by = Auth::user()->id;
+        $invoice->invoice_status = '1';
+
+        DB::transaction(function() use($request,$invoice,$id){
+            foreach($request->selling_qty as $key => $val){
+             $invoice_details = InvoiceDetail::where('id',$key)->first();
+
+             $invoice_details->invoice_detail_status = '1';
+             $invoice_details->save();
+
+             $product = Product::where('id',$invoice_details->product_id)->first();
+
+             $product->quantity = ((float)$product->quantity) - ((float)$request->selling_qty[$key]);
+
+             $product->save();
+            } // end foreach
+
+            $invoice->save();
+        });
+
+        $notification = array(
+            'message' => 'Invoice Approve Successfully', 
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->route('all_invoice')->with($notification);  
+    }
     
 
 
