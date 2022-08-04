@@ -29,5 +29,18 @@ class ReportController extends Controller{
         return view('admin.report.invoice.daily_nvoice_report_form');
     }
 
+    public function dailyInvoiceReport(Request $request){
 
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+         
+        $sdate = date('Y-m-d',strtotime($request->start_date));
+        $edate = date('Y-m-d',strtotime($request->end_date));
+        $allData = Invoice::whereBetween('date',[$sdate,$edate])->where('invoice_status','1')->get();
+
+
+        $start_date = date('Y-m-d',strtotime($request->start_date));
+        $end_date = date('Y-m-d',strtotime($request->end_date));
+
+        return view('admin.report.invoice.daily_nvoice_report',compact('allData','start_date','end_date','date'));
+    }
 }
