@@ -239,7 +239,7 @@
                                     <span>Report</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{ route('report_invoice_list') }}">All Invoice List</a></li>
+                                    <li><a href="{{ route('report_invoice_list') }}">Approved Invoice List</a></li>
                                 </ul>
                             </li>
 

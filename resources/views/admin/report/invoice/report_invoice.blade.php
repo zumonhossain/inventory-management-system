@@ -174,8 +174,13 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="d-print-none">
-                                        <div class="float-end">
+
+
+                                    <div class="">
+
+                                        <i>Printing Time : {{ $date->format('F j, Y, g:i a') }}</i>
+
+                                        <div class="float-end d-print-none">
                                             <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
                                             <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
                                         </div>
