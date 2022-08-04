@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header all_and_all">
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i> Stock Report </h4>
-                    <a href="{{ route('stock_report') }}" class="btn btn-danger sm" style="float:right"><i class="fa fa-print"></i></a>
+                    <a href="{{ route('stock_report') }}" target="_blank" class="btn btn-danger sm" style="float:right"><i class="fa fa-print"></i></a>
                 </div>
                 <div class="card-body">
                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

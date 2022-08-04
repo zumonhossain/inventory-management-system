@@ -33,7 +33,7 @@
                                     <td> $ {{ $item->payment->total_amount }} </td>
                                     <!-- <td>  $ {{ $item['payment']['total_amount'] }} </td> -->
                                     <td>
-                                        <a href="{{ route('report_invoice',$item->id) }}" class="btn btn-danger sm" title="Print Invoice"><i class="fa fa-print"></i> </a>
+                                        <a href="{{ route('report_invoice',$item->id) }}" target="_blank" class="btn btn-danger sm" title="Print Invoice"><i class="fa fa-print"></i> </a>
                                     </td>
                                 </tr>
                             @endforeach

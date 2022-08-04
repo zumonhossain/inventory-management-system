@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Supplier;
+use App\Models\Category;
 use DateTime;
 use DateTimeZone;
 
@@ -59,5 +61,24 @@ class ReportController extends Controller{
     }
 
 
+    // Stock Supplier / Product Report
+    public function stockSupplierProductReportForm(){
+        $supppliers = Supplier::all();
+        $category = Category::all();
+        return view('admin.report.stock.stock_supplier_product_report_form',compact('supppliers','category'));
+    }
+
+    public function supplierWiseStockReport(Request $request){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Product::orderBy('supplier_id','asc')->orderBy('category_id','asc')->where('supplier_id',$request->supplier_id)->get();
+        return view('admin.report.stock.supplier_wise_stock_report',compact('allData','date'));
+    }
+
+    public function productWiseStockReport(Request $request){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $product = Product::where('category_id',$request->category_id)->where('id',$request->product_id)->first();
+        return view('admin.report.stock.product_wise_stock_report',compact('product','date'));
+    }
+    
 
 }

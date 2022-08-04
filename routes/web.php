@@ -123,6 +123,9 @@ Route::group(['prefix'=>'admin'], function(){
     // Report Stock
     Route::get('/stock/report/all',[ReportController::class,'allStockReport'])->name('all_stock_report');
     Route::get('/stock/report',[ReportController::class,'stockReport'])->name('stock_report');
+    Route::get('/stock/supplier/product/report/form',[ReportController::class,'stockSupplierProductReportForm'])->name('stock_supplier_product_report_form');
+    Route::get('/stock/supplier/wise/report',[ReportController::class,'supplierWiseStockReport'])->name('supplier_wise_stock_report');
+    Route::get('/stock/product/wise/report',[ReportController::class,'productWiseStockReport'])->name('product_wise_stock_report');
 
     
 });
