@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PurchaseController;
 use App\Http\Controllers\Admin\AjaxController;
 use App\Http\Controllers\Admin\InvoiceController;
+use App\Http\Controllers\Admin\ReportController;
 
 
 /*
@@ -106,11 +107,17 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/invoice/pending-invoice',[InvoiceController::class,'pendingInvoice'])->name('pending_invoice');
     Route::get('/invoice/delete-invoice/{id}',[InvoiceController::class,'deleteInvoice'])->name('delete_invoice');
     Route::get('/invoice/approve-invoice/{id}',[InvoiceController::class,'approveInvoice'])->name('approve_invoice');
-    
-    Route::post('/invoice/insert-approve-invoice/{id}',[InvoiceController::class,'insertApproveInvoiceFormSubmit'])->name('insert_approve_invoice');
 
+    Route::post('/invoice/insert-approve-invoice/{id}',[InvoiceController::class,'insertApproveInvoiceFormSubmit'])->name('insert_approve_invoice');
     // AjaxInvoiceRouteCode
     Route::get('/check-stock',[AjaxController::class,'getStock'])->name('check-product-stock');
+
+
+
+    // Report
+    Route::get('/report/invoice/list',[ReportController::class,'reportInvoiceList'])->name('report_invoice_list');
+    Route::get('/report/invoice/{id}',[ReportController::class,'reportInvoice'])->name('report_invoice');
+
     
 });
 
