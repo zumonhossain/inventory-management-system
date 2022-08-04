@@ -10,6 +10,8 @@ use DateTime;
 use DateTimeZone;
 
 class ReportController extends Controller{
+
+    // All Invoice List
     public function reportInvoiceList(){
         $invoice = Invoice::where('invoice_status',1)->orderBy('date','desc')->orderBy('id','desc')->get();
         return view('admin.report.invoice.report_invoice_list',compact('invoice'));
@@ -21,4 +23,11 @@ class ReportController extends Controller{
         $payment = Payment::where('invoice_id',$invoice->id)->first();
         return view('admin.report.invoice.report_invoice',compact('invoice','payment','date'));
     }
+
+    // Daily Invoice Report
+    public function dailyInvoiceReportForm(){
+        return view('admin.report.invoice.daily_nvoice_report_form');
+    }
+
+
 }

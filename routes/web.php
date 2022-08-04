@@ -117,6 +117,8 @@ Route::group(['prefix'=>'admin'], function(){
     // Report
     Route::get('/report/invoice/list',[ReportController::class,'reportInvoiceList'])->name('report_invoice_list');
     Route::get('/report/invoice/{id}',[ReportController::class,'reportInvoice'])->name('report_invoice');
+    Route::get('/daily/invoice/report/form',[ReportController::class,'dailyInvoiceReportForm'])->name('daily_invoice_report_form');
+
 
     
 });

@@ -240,6 +240,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('report_invoice_list') }}">Approved Invoice List</a></li>
+                                    <li><a href="{{ route('daily_invoice_report_form') }}">Daily Invoice Report</a></li>
                                 </ul>
                             </li>
 
