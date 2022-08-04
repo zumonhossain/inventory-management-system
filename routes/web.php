@@ -114,11 +114,15 @@ Route::group(['prefix'=>'admin'], function(){
 
 
 
-    // Report
+    // Report Invoice
     Route::get('/report/invoice/list',[ReportController::class,'reportInvoiceList'])->name('report_invoice_list');
     Route::get('/report/invoice/{id}',[ReportController::class,'reportInvoice'])->name('report_invoice');
     Route::get('/daily/invoice/report/form',[ReportController::class,'dailyInvoiceReportForm'])->name('daily_invoice_report_form');
     Route::get('/daily/invoice/report',[ReportController::class,'dailyInvoiceReport'])->name('daily_invoice_report');
+
+    // Report Stock
+    Route::get('/stock/report/all',[ReportController::class,'allStockReport'])->name('all_stock_report');
+    Route::get('/stock/report',[ReportController::class,'stockReport'])->name('stock_report');
 
     
 });

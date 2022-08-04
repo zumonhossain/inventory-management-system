@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Payment;
+use App\Models\Product;
 use DateTime;
 use DateTimeZone;
 
@@ -43,4 +44,20 @@ class ReportController extends Controller{
 
         return view('admin.report.invoice.daily_nvoice_report',compact('allData','start_date','end_date','date'));
     }
+
+
+    // Stock Report
+    public function allStockReport(){
+        $allData = Product::orderBy('supplier_id','asc')->orderBy('category_id','asc')->get();
+        return view('admin.report.stock.all_stock_report',compact('allData'));
+    }
+
+    public function stockReport(){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Product::orderBy('supplier_id','asc')->orderBy('category_id','asc')->get();
+        return view('admin.report.stock.stock_report',compact('allData','date'));
+    }
+
+
+
 }
