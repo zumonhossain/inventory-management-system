@@ -152,12 +152,12 @@
                             <li class="menu-title">Menu</li>
 
                             <li>
-                                <a href="{{ route('admin.dashboard') }}" class="waves-effect"><i class="ri-dashboard-line"></i><span>Dashboard</span></a>
+                                <a href="{{ route('admin.dashboard') }}" class="waves-effect"><i class="ri-home-line"></i><span>Dashboard</span></a>
                             </li>
                             
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-hotel-line"></i>
                                     <span>Manage Suppliers</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -168,7 +168,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-shield-user-line"></i>
                                     <span>Manage Customers</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -179,7 +179,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-delete-back-line"></i>
                                     <span>Manage Units</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -190,7 +190,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-apps-2-line"></i>
                                     <span>Manage Category</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -201,7 +201,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-reddit-line"></i>
                                     <span>Manage Product</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -212,7 +212,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-oil-line"></i>
                                     <span>Manage Purchase</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -224,7 +224,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-compass-line"></i>
                                     <span>Manage Invoice</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -235,7 +235,7 @@
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-hotel-fill"></i>
+                                    <i class="ri-file-pdf-line"></i>
                                     <span>Report</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -245,17 +245,8 @@
                                     <li><a href="{{ route('stock_supplier_product_report_form') }}">Supplier / Product Wise Stock</a></li>
                                 </ul>
                             </li>
-
-                            <li class="menu-title">Pages</li>
-
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="ri-account-circle-line"></i>
-                                    <span>Authentication</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="auth-login.html">Login</a></li>
-                                </ul>
+                                <a href="{{ route('admin.logout') }}" class="waves-effect"><i class="ri-shut-down-line"></i><span>Logout</span></a>
                             </li>
                         </ul>
                     </div>
