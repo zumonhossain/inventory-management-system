@@ -127,6 +127,9 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/stock/supplier/wise/report',[ReportController::class,'supplierWiseStockReport'])->name('supplier_wise_stock_report');
     Route::get('/stock/product/wise/report',[ReportController::class,'productWiseStockReport'])->name('product_wise_stock_report');
 
+    // Report Daily Purchase
+    Route::get('/daily/purchase/report/form',[ReportController::class,'dailyPurchaseReportForm'])->name('daily_purchase_report_form');
+    Route::get('/daily/purchase/report',[ReportController::class,'dailyPurchaseReport'])->name('daily_purchase_report');
     
 });
 

@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Category;
+use App\Models\Purchase;
 use DateTime;
 use DateTimeZone;
 
@@ -80,5 +81,21 @@ class ReportController extends Controller{
         return view('admin.report.stock.product_wise_stock_report',compact('product','date'));
     }
     
+    public function dailyPurchaseReportForm(){
+        return view('admin.report.purchase.daily_purchase_report_form');
+    }
 
+    public function dailyPurchaseReport(Request $request){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+
+        $sdate = date('Y-m-d',strtotime($request->start_date));
+        $edate = date('Y-m-d',strtotime($request->end_date));
+        $allData = Purchase::whereBetween('date',[$sdate,$edate])->where('purchase_status','1')->get();
+
+
+        $start_date = date('Y-m-d',strtotime($request->start_date));
+        $end_date = date('Y-m-d',strtotime($request->end_date));
+
+        return view('admin.report.purchase.daily_purchase_report',compact('allData','start_date','end_date','date'));
+    }
 }
