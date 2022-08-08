@@ -64,6 +64,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/customer/delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete_customer');
 
     Route::get('/credit/customer',[CustomerController::class,'creditCustomer'])->name('credit_customer');
+    Route::get('/edit/customer/invoice/{invoice_id}',[CustomerController::class,'editCustomerInvoice'])->name('edit_customer_invoice');
+    Route::post('/customer/update/invoice/{invoice_id}',[CustomerController::class,'updateCustomerInvoice'])->name('customer_update_invoice');
     
     // Unit
     Route::get('/unit/all-unit',[UnitController::class,'allUnit'])->name('all_unit');

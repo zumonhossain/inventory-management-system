@@ -63,23 +63,23 @@ class InvoiceController extends Controller{
     
             } else {
     
-        $data = date('Y-m-d');
+        $date = date('Y-m-d');
 
         $invoice = new Invoice();
         $invoice->invoice_no = $request->invoice_no;
-        $invoice->date = $data;
+        $invoice->date = $date;
         $invoice->description = $request->description;
         $invoice->invoice_status = '0';
         $invoice->created_by = Auth::user()->id; 
     
         DB::transaction(function() use($request,$invoice){
-            $data = date('Y-m-d');
+            $date = date('Y-m-d');
             if ($invoice->save()) {
                $count_category = count($request->category_id);
                for ($i=0; $i < $count_category ; $i++) { 
     
                   $invoice_details = new InvoiceDetail();
-                  $invoice_details->date = $data;
+                  $invoice_details->date = $date;
                   $invoice_details->invoice_id = $invoice->id;
                   $invoice_details->category_id = $request->category_id[$i];
                   $invoice_details->product_id = $request->product_id[$i];
@@ -126,7 +126,7 @@ class InvoiceController extends Controller{
                 $payment->save();
     
                 $payment_details->invoice_id = $invoice->id; 
-                $payment_details->date = $data;
+                $payment_details->date = $date;
                 $payment_details->save(); 
             } 
     
