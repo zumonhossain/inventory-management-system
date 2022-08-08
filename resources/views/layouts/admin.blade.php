@@ -173,7 +173,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('all_customer') }}">All Customers</a></li>
-                                
+                                    <li><a href="{{ route('credit_customer') }}">Credit Customers</a></li>
                                 </ul>
                             </li>
 

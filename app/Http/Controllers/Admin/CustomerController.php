@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ManageInfoService;
 use App\Http\Controllers\Helpers\FileUploadController;
 use Illuminate\Http\Request;
+use App\Models\Payment;
 use Image;
 use Auth;
 
@@ -81,6 +82,12 @@ class CustomerController extends Controller{
             'alert-type' => 'success',
         );
         return redirect()->route('all_customer')->with($notification);
+    }
+
+    
+    public function creditCustomer(){
+        $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('admin.customer.credit_customer',compact('allData'));
     }
 
 
