@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Category;
 use App\Models\Purchase;
+use App\Models\Customer;
 use DateTime;
 use DateTimeZone;
 
@@ -127,5 +128,23 @@ class ReportController extends Controller{
         $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
         $allData = Payment::where('paid_status','!=','full_due')->get();
         return view('admin.report.customer.all_paid_customer_report',compact('allData','date'));
+    }
+
+    // Customer Wise Report
+    public function CustomerWiseReport(){
+        $customers = Customer::all();
+        return view('admin.report.customer.customer_wise_report_form',compact('customers'));
+    }
+
+    public function CustomerWiseCreditReport(Request $request){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Payment::where('customer_id',$request->customer_id)->whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('admin.report.customer.customer_wise_credit_report',compact('allData','date'));
+    }
+
+    public function CustomerWisePaidReport(Request $request){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Payment::where('customer_id',$request->customer_id)->where('paid_status','!=','full_due')->get();
+        return view('admin.report.customer.customer_wise_paid_report',compact('allData','date'));
     }
 }
