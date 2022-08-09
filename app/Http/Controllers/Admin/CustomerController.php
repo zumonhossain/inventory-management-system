@@ -143,4 +143,10 @@ class CustomerController extends Controller{
             return redirect()->route('credit_customer')->with($notification); 
         }
     }
+
+    // Customer Invoice Details
+    public function customerInvoiceDetails($invoice_id){
+        $payment = Payment::where('invoice_id',$invoice_id)->first();
+        return view('admin.customer.customer_invoice_details',compact('payment'));
+    }
 }

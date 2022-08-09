@@ -153,7 +153,7 @@
                                                 <div class="form-group col-md-3">
                                                     <div class="md-3">
                                                     <label for="example-text-input" class="form-label">Date</label>
-                                                    <input class="form-control example-date-input" placeholder="YYYY-MM-DD"  name="date" type="date"  id="date">
+                                                    <input class="form-control example-date-input" placeholder="YYYY-MM-DD"  name="date" type="date"  id="date" value="{{ date('Y-m-d') }}">
                                                 </div>
                                             </div>
 
