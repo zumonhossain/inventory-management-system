@@ -246,6 +246,7 @@
                                     <li><a href="{{ route('stock_supplier_product_report_form') }}">Supplier / Product Wise Stock</a></li>
                                     <li><a href="{{ route('daily_purchase_report_form') }}">Daily Purchase Report</a></li>
                                     <li><a href="{{ route('credit_customer_report_form') }}">Credit Customer Report</a></li>
+                                    <li><a href="{{ route('paid_customer_report_form') }}">Paid Customer Report</a></li>
                                 </ul>
                             </li>
                             <li>

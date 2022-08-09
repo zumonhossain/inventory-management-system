@@ -116,4 +116,14 @@ class ReportController extends Controller{
         $payment = Payment::where('invoice_id',$invoice_id)->first();
         return view('admin.report.customer.customer_invoice_details_report',compact('payment','date'));
     }
+
+    // Paid Customer Report Form
+    public function paidCustomerReportForm(){
+        $allData = Payment::where('paid_status','!=','full_due')->get();
+        return view('admin.report.customer.paid_customer_report_form',compact('allData'));
+    }
+
+    public function paidCustomerInvoiceDetailsReport($invoice_id){
+
+    }
 }
