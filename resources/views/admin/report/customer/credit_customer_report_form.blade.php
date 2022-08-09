@@ -30,7 +30,7 @@
                                     <td> {{  date('d-m-Y',strtotime($item['invoice']['date'])) }} </td> 
                                     <td> {{ $item->due_amount }} </td> 
                                     <td>
-                                        <a href="{{ route('customer_invoice_details',$item->invoice_id) }}" target="_blank" class="btn btn-danger sm" title="Print Invoice"><i class="fa fa-print"></i> </a>
+                                        <a href="{{ route('customer_invoice_details_report',$item->invoice_id) }}" target="_blank" class="btn btn-danger sm" title="Customer Invoice Details Report"><i class="fa fa-print"></i> </a>
                                     </td>
                                 </tr>
                             @endforeach

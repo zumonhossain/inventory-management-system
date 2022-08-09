@@ -139,6 +139,7 @@ Route::group(['prefix'=>'admin'], function(){
     //Credit Customer Report Form
     Route::get('/credit/customer/report/form',[ReportController::class,'creditCustomerReportForm'])->name('credit_customer_report_form');
     Route::get('/all/credit/customer/report',[ReportController::class,'allCreditCustomerReport'])->name('all_credit_customer_report');
+    Route::get('/customer/invoice/details/report/{invoice_id}',[ReportController::class,'customerInvoiceDetailsReport'])->name('customer_invoice_details_report');
     
 });
 

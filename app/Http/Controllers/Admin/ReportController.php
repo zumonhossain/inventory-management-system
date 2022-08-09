@@ -110,4 +110,10 @@ class ReportController extends Controller{
         $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
         return view('admin.report.customer.all_credit_customer_report',compact('allData','date'));
     }
+
+    public function customerInvoiceDetailsReport($invoice_id){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $payment = Payment::where('invoice_id',$invoice_id)->first();
+        return view('admin.report.customer.customer_invoice_details_report',compact('payment','date'));
+    }
 }
