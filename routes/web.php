@@ -144,6 +144,7 @@ Route::group(['prefix'=>'admin'], function(){
 
     // Paid Customer Report Form
     Route::get('/paid/customer/report/form',[ReportController::class,'paidCustomerReportForm'])->name('paid_customer_report_form');
+    Route::get('/all/paid/customer/report',[ReportController::class,'allPaidCustomerReport'])->name('all_paid_customer_report');
     
 });
 

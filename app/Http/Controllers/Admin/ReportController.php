@@ -123,7 +123,9 @@ class ReportController extends Controller{
         return view('admin.report.customer.paid_customer_report_form',compact('allData'));
     }
 
-    public function paidCustomerInvoiceDetailsReport($invoice_id){
-
+    public function allPaidCustomerReport(){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Payment::where('paid_status','!=','full_due')->get();
+        return view('admin.report.customer.all_paid_customer_report',compact('allData','date'));
     }
 }

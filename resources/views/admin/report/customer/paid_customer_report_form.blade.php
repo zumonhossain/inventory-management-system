@@ -36,6 +36,16 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="row">
+                        <div class="col-md-4 offset-md-3">
+                            <div class="float-end d-print-none">
+                                <a href="{{ route('all_paid_customer_report') }}" target="_blank" class="btn btn-success waves-effect waves-light"><i class="fa fa-print"></i></a>
+                                <a href="#" class="btn btn-primary waves-effect waves-light ms-2">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
