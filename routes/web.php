@@ -135,6 +135,10 @@ Route::group(['prefix'=>'admin'], function(){
     // Report Daily Purchase
     Route::get('/daily/purchase/report/form',[ReportController::class,'dailyPurchaseReportForm'])->name('daily_purchase_report_form');
     Route::get('/daily/purchase/report',[ReportController::class,'dailyPurchaseReport'])->name('daily_purchase_report');
+
+    //Credit Customer Report Form
+    Route::get('/credit/customer/report/form',[ReportController::class,'creditCustomerReportForm'])->name('credit_customer_report_form');
+    Route::get('/all/credit/customer/report',[ReportController::class,'allCreditCustomerReport'])->name('all_credit_customer_report');
     
 });
 

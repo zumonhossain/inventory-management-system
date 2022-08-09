@@ -98,4 +98,16 @@ class ReportController extends Controller{
 
         return view('admin.report.purchase.daily_purchase_report',compact('allData','start_date','end_date','date'));
     }
+
+    // Credit Customer Report Form
+    public function creditCustomerReportForm(){
+        $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('admin.report.customer.credit_customer_report_form',compact('allData'));
+    }
+
+    public function allCreditCustomerReport(){
+        $date = new DateTime('now', new DateTimeZone('Asia/Dhaka'));
+        $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+        return view('admin.report.customer.all_credit_customer_report',compact('allData','date'));
+    }
 }
