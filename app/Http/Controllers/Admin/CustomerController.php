@@ -149,4 +149,10 @@ class CustomerController extends Controller{
         $payment = Payment::where('invoice_id',$invoice_id)->first();
         return view('admin.customer.customer_invoice_details',compact('payment'));
     }
+
+    // Paid Customer
+    public function paidCustomer(){
+        $allData = Payment::where('paid_status','!=','full_due')->get();
+        return view('admin.customer.paid_customer',compact('allData'));
+    }
 }

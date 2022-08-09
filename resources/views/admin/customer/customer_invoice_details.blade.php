@@ -8,7 +8,6 @@
             <div class="card">
                 <div class="card-header all_and_all">
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i>Customer Invoice Details</h4>
-                    <a href="{{ route('credit_customer') }}" class="all_link"><i class="mdi mdi-grid"></i> All Credit Customer</a>
                 </div>
                 <div class="card-body">
 
